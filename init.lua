@@ -10,9 +10,8 @@ if not vim.uv.fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
-
+vim.diagnostic.open_float()
 local lazy_config = require "configs.lazy"
-
 -- load plugins
 require("lazy").setup({
   {
@@ -35,5 +34,4 @@ require "autocmds"
 vim.schedule(function()
   require "mappings"
 end)
-
 vim.lsp.enable "typescript-language-server"

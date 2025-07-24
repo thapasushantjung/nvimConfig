@@ -7,13 +7,13 @@ require("lspconfig").phpactor.setup {
   root_dir = function(_)
     return vim.loop.cwd()
   end,
-  init_options = { 
+  init_options = {
     ["language_server.diagnostics_on_update"] = false,
     ["language_server.diagnostics_on_open"] = false,
     ["language_server.diagnostics_on_save"] = false,
     ["language_server_phpstan.enabled"] = false,
     ["language_server_psalm.enabled"] = false,
-  }
+  },
 }
 
 require("lspconfig").ts_ls.setup {
@@ -39,4 +39,5 @@ require("lspconfig").tailwindcss.setup {
     },
   },
 }
--- read :h vim.lsp.config for changing options of lsp servers 
+
+-- read :h vim.lsp.config for changing options of lsp servers

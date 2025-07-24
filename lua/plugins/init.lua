@@ -13,6 +13,14 @@ return {
     end,
   },
   {
+    "mfussenegger/nvim-jdtls",
+    ft = "java",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
+  {
+
     "phaazon/hop.nvim",
     branch = "v2", -- Recommended to use the latest version
     config = function()
@@ -29,6 +37,7 @@ return {
         "cpp",
         "css",
         "html",
+        "java",
         "javascript",
         "json",
         "lua",
@@ -45,6 +54,40 @@ return {
         enable = true,
       },
     },
+  },
+  {
+    "mfussenegger/nvim-dap",
+    config = function()
+      require "configs.dap"
+    end,
+  },
+  {
+    "nvim-neotest/nvim-nio",
+  },
+
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "nvim-neotest/nvim-nio",
+    },
+    config = function()
+      require "configs.dap-ui"
+    end,
+  },
+  {
+    "mfussenegger/nvim-jdtls",
+    ft = "java",
+    config = function()
+      require "configs.dap-java"
+    end,
+  },
+  {
+    "jay-babu/mason-nvim-dap.nvim",
+    event = "VeryLazy",
+    config = function()
+      require "configs.mason-dap"
+    end,
   },
   {
     "windwp/nvim-ts-autotag",
