@@ -9,7 +9,7 @@ map("i", "jk", "<ESC>")
 local hop = require "hop"
 local directions = require("hop.hint").HintDirection
 
-map("", "f", function()
+map("", "sf", function()
   hop.hint_char2()
 end, { remap = true })
 
