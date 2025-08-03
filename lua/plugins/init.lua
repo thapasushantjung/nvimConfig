@@ -1,5 +1,17 @@
 return {
   {
+    "williamboman/mason.nvim",
+    cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
+    opts = function()
+      return require "nvchad.configs.mason"
+    end,
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    event = "VeryLazy",
+    dependencies = { "mason.nvim" },
+  },
+  {
     "stevearc/conform.nvim",
     event = "BufWritePre", -- uncomment for format on save
     opts = require "configs.conform",
@@ -11,13 +23,17 @@ return {
     config = function()
       require "configs.lspconfig"
     end,
-  },
-  {
+  },  {
     "mfussenegger/nvim-jdtls",
     ft = "java",
     dependencies = {
       "nvim-lua/plenary.nvim",
+      "mfussenegger/nvim-dap",
     },
+    config = function()
+      -- JDTLS setup is handled in ftplugin/java.lua
+      -- This ensures it loads per Java buffer
+    end,
   },
   {
 
@@ -40,6 +56,7 @@ return {
         "java",
         "javascript",
         "json",
+        "kotlin",
         "lua",
         "markdown",
         "python",
@@ -74,17 +91,12 @@ return {
     config = function()
       require "configs.dap-ui"
     end,
-  },
-  {
-    "mfussenegger/nvim-jdtls",
-    ft = "java",
-    config = function()
-      require "configs.dap-java"
-    end,
-  },
-  {
+  },  {
     "jay-babu/mason-nvim-dap.nvim",
     event = "VeryLazy",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+    },
     config = function()
       require "configs.mason-dap"
     end,
