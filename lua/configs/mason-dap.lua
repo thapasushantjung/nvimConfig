@@ -6,12 +6,10 @@ require("mason-nvim-dap").setup {
   automatic_installation = { exclude = {} },
   handlers = {
     function(config)
-      -- Default handler
+      -- Default handler for all DAP adapters
       require("mason-nvim-dap").default_setup(config)
     end,
-    java = function(config)
-      -- Java debugging is handled by nvim-jdtls
-      -- No additional setup needed here
-    end,
+    -- Note: Java debugging is handled by nvim-jdtls, not through mason-nvim-dap
+    -- The java-debug-adapter and java-test are installed but configured in ftplugin/java.lua
   },
 }
