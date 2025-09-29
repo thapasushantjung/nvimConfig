@@ -10,6 +10,7 @@ local options = {
     json = { "prettier" },
     yaml = { "prettier" },
     markdown = { "prettier" },
+    php = {"pint"},
   },
 
   format_on_save = {
